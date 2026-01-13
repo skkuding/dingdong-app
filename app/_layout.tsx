@@ -4,24 +4,24 @@ export default function TabLayout() {
   return (
     <NativeTabs>
       <NativeTabs.Trigger name="index">
-        <Label>Home</Label>
-        <Icon sf="house.fill" drawable="custom_android_drawable" />
+        <Icon src={require("@/assets/icons/gnb/home-1.png")} />
+        <Label>홈</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="help">
-        <Icon sf="gear" drawable="custom_settings_drawable" />
-        <Label>Settings</Label>
+        <Icon src={require("@/assets/icons/gnb/networking-1.png")} />
+        <Label>도와줘</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="schedule">
-        <Icon sf="gear" drawable="custom_settings_drawable" />
-        <Label>Settings</Label>
+        <Icon src={require("@/assets/icons/gnb/date-1.png")} />
+        <Label>일정</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="community">
-        <Icon sf="gear" drawable="custom_settings_drawable" />
-        <Label>Settings</Label>
+        <Icon src={require("@/assets/icons/gnb/chat-1.png")} />
+        <Label>모임</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="mypage">
-        <Icon sf="gear" drawable="custom_settings_drawable" />
-        <Label>Settings</Label>
+        <Icon src={require("@/assets/icons/gnb/person-1.png")} />
+        <Label>마이</Label>
       </NativeTabs.Trigger>
     </NativeTabs>
   );
