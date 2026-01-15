@@ -4,6 +4,7 @@ import * as Haptics from "expo-haptics";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type IconComponent = React.ComponentType<{
   size?: number;
@@ -73,18 +74,20 @@ function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 
 export default function Layout() {
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-      }}
-      tabBar={(props) => <CustomTabBar {...props} />}
-    >
-      <Tabs.Screen name="index" />
-      <Tabs.Screen name="help" />
-      <Tabs.Screen name="schedule" />
-      <Tabs.Screen name="community" />
-      <Tabs.Screen name="mypage" />
-    </Tabs>
+    <SafeAreaView className="flex-1">
+      <Tabs
+        screenOptions={{
+          headerShown: false,
+        }}
+        tabBar={(props) => <CustomTabBar {...props} />}
+      >
+        <Tabs.Screen name="index" />
+        <Tabs.Screen name="help" />
+        <Tabs.Screen name="schedule" />
+        <Tabs.Screen name="community" />
+        <Tabs.Screen name="mypage" />
+      </Tabs>
+    </SafeAreaView>
   );
 }
 
@@ -96,7 +99,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#E5E5E5",
     paddingVertical: 10,
     paddingHorizontal: 8,
-    marginBottom: 30,
     marginHorizontal: 16,
     position: "absolute",
     bottom: 0,
