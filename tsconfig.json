@@ -3,7 +3,9 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
   "include": [
@@ -14,6 +16,7 @@
     "babel.config.js",
     ".vscode/_layout.tsx",
     ".vscode/help.tsx",
-    ".vscode/index.tsx"
+    ".vscode/index.tsx",
+    "nativewind-env.d.ts"
   ]
 }

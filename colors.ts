@@ -1,0 +1,27 @@
+module.exports = {
+  common: { 0: "#000000", 100: "#FFFFFF" },
+  neutral: {
+    5: "#0F0F0F",
+    10: "#171717",
+    15: "#1C1C1C",
+    20: "#2A2A2A",
+    30: "#474747",
+    40: "#5C5C5C",
+    50: "#737373",
+    60: "#8A8A8A",
+    70: "#9B9B9B",
+    80: "#B0B0B0",
+    90: "#C4C4C4",
+    95: "#E6E6E6",
+    99: "#F5F5F5",
+  },
+  primary: {
+    normal: "#5558FF",
+    "extralight-coolgray": "#E6E7EC",
+    "light-coolgray": "#A0A3C6",
+    "normal-coolgray": "#545774",
+    deep: "#191928",
+    "cool-black": "#151519",
+    "error-normal": "#FF6359",
+  },
+};
