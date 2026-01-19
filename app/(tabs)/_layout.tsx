@@ -1,4 +1,8 @@
-import HomeComponent from "@/components/svgs/HomeComponent";
+import CommunityIcon from "@/assets/icons/gnb/chat-1.svg";
+import ScheduleIcon from "@/assets/icons/gnb/date.svg";
+import HomeIcon from "@/assets/icons/gnb/home-1.svg";
+import HelpIcon from "@/assets/icons/gnb/networking-1.svg";
+import MyPageIcon from "@/assets/icons/gnb/person-1.svg";
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 
 import * as Haptics from "expo-haptics";
@@ -16,11 +20,11 @@ type IconComponent = React.ComponentType<{
 }>;
 
 const TAB_CONFIG: Record<string, { label: string; Icon: IconComponent }> = {
-  index: { label: "홈", Icon: HomeComponent },
-  help: { label: "도와줘", Icon: HomeComponent },
-  schedule: { label: "일정", Icon: HomeComponent },
-  community: { label: "모임", Icon: HomeComponent },
-  mypage: { label: "마이", Icon: HomeComponent },
+  index: { label: "홈", Icon: HomeIcon },
+  help: { label: "도와줘", Icon: HelpIcon },
+  schedule: { label: "일정", Icon: ScheduleIcon },
+  community: { label: "모임", Icon: CommunityIcon },
+  mypage: { label: "마이", Icon: MyPageIcon },
 };
 
 function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
@@ -30,7 +34,7 @@ function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
         const { options } = descriptors[route.key];
         const config = TAB_CONFIG[route.name];
         const label = config?.label ?? options.title ?? route.name;
-        const Icon = config?.Icon ?? HomeComponent;
+        const Icon = config?.Icon ?? HomeIcon;
 
         const isFocused = state.index === index;
 
