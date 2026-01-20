@@ -1,11 +1,13 @@
-import { Text, View } from "react-native";
+import { Button } from "@/components/ui/button";
+import { Text } from "@/components/ui/text";
+import { View } from "react-native";
 
 export default function Tab() {
   return (
-    <View className="flex-1">
-      <Text className="text-head2-m-24 text-primary-error-normal">
-        Tab [Home|Settings]
-      </Text>
+    <View className="flex-1 bg-blue-200">
+      <Button variant="default" size="default" className="m-4">
+        <Text>Click me</Text>
+      </Button>
     </View>
   );
 }

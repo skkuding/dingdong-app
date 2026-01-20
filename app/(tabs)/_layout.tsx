@@ -8,8 +8,8 @@ import Help1 from "@/assets/icons/gnb/networking-1.svg";
 import Help2 from "@/assets/icons/gnb/networking-2.svg";
 import MyPage1 from "@/assets/icons/gnb/person-1.svg";
 import MyPage2 from "@/assets/icons/gnb/person-2.svg";
-import colors from "@/colors";
 import Header from "@/components/Header";
+import colors from "@/styles/colors";
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 
 import * as Haptics from "expo-haptics";
@@ -90,7 +90,7 @@ function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 
 export default function Layout() {
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1 ">
       <Header />
       <Tabs
         screenOptions={{

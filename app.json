@@ -8,6 +8,7 @@
     "scheme": "dingdong",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "backgroundColor": "#000000",
     "ios": {
       "supportsTablet": true
     },
@@ -39,7 +40,8 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "expo-system-ui"
     ],
     "experiments": {
       "typedRoutes": true,

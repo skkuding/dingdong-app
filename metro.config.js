@@ -18,4 +18,7 @@ module.exports = (() => {
   return config;
 })();
 
-module.exports = withNativeWind(config, { input: "./global.css" });
+module.exports = withNativeWind(config, {
+  input: "./global.css",
+  inlineRem: 16,
+});
