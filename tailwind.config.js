@@ -14,7 +14,7 @@ const fontSize = Object.fromEntries(
         fontWeight: value.fontWeight,
       },
     ],
-  ])
+  ]),
 );
 
 module.exports = {
@@ -25,4 +25,7 @@ module.exports = {
     extend: { colors, fontSize },
   },
   plugins: [],
+  corePlugins: {
+    backgroundOpacity: true,
+  },
 };
