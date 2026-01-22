@@ -4,30 +4,38 @@ import * as TabsPrimitive from "@rn-primitives/tabs";
 import { createContext, useContext } from "react";
 import { Platform } from "react-native";
 
-type TabsVariant = "underline" | "pill";
+type TabsVariant = "underline" | "pill" | "outline" | "icon";
 
 const TabsVariantContext = createContext<TabsVariant>("underline");
 
 // 1. 배경/테두리 스타일
 const tabsTriggerBaseVariants = {
   underline: "px-7 py-2",
-  pill: "px-4 py-1.5 rounded-full",
+  pill: "px-4 py-1.5 rounded-full bg-neutral-99",
+  outline: "px-4 py-2 rounded-full bg-neutral-99",
+  icon: "px-[14px]",
 };
 
 const tabsTriggerSelectedVariants = {
   underline: "border-b-2 border-primary-normal",
   pill: "bg-primary-deep",
+  outline: "bg-primary-extralight-coolgray border border-primary-normal",
+  icon: "",
 };
 
 // 2. 텍스트 색상 스타일 (이 부분이 질문하신 내용입니다)
 const tabsTextBaseVariants = {
   underline: "text-neutral-50",
   pill: "text-neutral-40", // 기본 색상이 같다면 문자열로 합쳐도 됩니다.
+  outline: "text-neutral-40",
+  icon: "text-neutral-30",
 };
 
 const tabsTextSelectedVariants = {
   underline: "text-common-0",
   pill: "text-common-100",
+  outline: "text-primary-normal",
+  icon: "text-primary-normal",
 };
 
 type TabsProps = TabsPrimitive.RootProps &
@@ -80,6 +88,7 @@ function TabsTrigger({
     <TextClassContext.Provider value={cn("text-body2-m-14", textClass)}>
       <TabsPrimitive.Trigger
         className={cn(
+          "flex items-center justify-center",
           tabsTriggerBaseVariants[contextVariant],
           isSelected && tabsTriggerSelectedVariants[contextVariant],
           Platform.select({
