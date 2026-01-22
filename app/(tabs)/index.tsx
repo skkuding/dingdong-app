@@ -1,112 +1,49 @@
-import MyPage1 from "@/assets/icons/hackathon.svg";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Text } from "@/components/ui/text";
-import * as React from "react";
-import { useState } from "react";
-import { View } from "react-native";
+// app/comments-screen.tsx
+import { CommentItem } from "@/components/comment-item";
+import { ScrollView, View } from "react-native";
 
-export default function Tab() {
-  const [value, setValue] = useState("feedback");
+const DUMMY_COMMENTS = [
+  {
+    id: "1",
+    author: "링딩동",
+    role: "디자이너",
+    date: "2025. 01. 01",
+    content:
+      "말씀 주신 내용 이해했습니다! Problem 불러오기 모달이 좀 더 보편적으로 사용하기 편리하기에 Contest 불러오기 모달을 Problem 불러오기 모달로 통일할게요",
+    replies: [
+      {
+        id: "1-1",
+        author: "김딩동",
+        role: "개발자",
+        date: "2025. 01. 01",
+        content: "네, 확인했습니다! 모달 구조 변경 후 다시 공유드릴게요.",
+      },
+      {
+        id: "1-2",
+        author: "김딩동",
+        role: "개발자",
+        date: "2025. 01. 01",
+        content: "추가로 모달의 애니메이션 속도도 조절이 필요할까요?",
+      },
+    ],
+  },
+  {
+    id: "2",
+    author: "박딩동",
+    role: "기획자",
+    date: "2025. 01. 02",
+    content: "전체적인 흐름이 아주 매끄럽네요. 수고하셨습니다!",
+  },
+];
+
+export default function CommentsScreen() {
   return (
-    <View className="flex w-full flex-col gap-6 px-4">
-      <Tabs value={value} onValueChange={setValue} variant="underline">
-        <TabsList>
-          <TabsTrigger value="feedback">
-            <Text>모임</Text>
-          </TabsTrigger>
-          <TabsTrigger value="survey">
-            <Text>테스크</Text>
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="feedback">
-          <View>
-            <Text>sss</Text>
-          </View>
-        </TabsContent>
-
-        <TabsContent value="survey">
-          <View>
-            <Text>ddd</Text>
-          </View>
-        </TabsContent>
-      </Tabs>
-      <Tabs value={value} onValueChange={setValue} variant="pill">
-        <TabsList>
-          <TabsTrigger value="feedback">
-            <Text>모임</Text>
-          </TabsTrigger>
-          <TabsTrigger value="survey">
-            <Text>테스크</Text>
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="feedback">
-          <View>
-            <Text>sss</Text>
-          </View>
-        </TabsContent>
-
-        <TabsContent value="survey">
-          <View>
-            <Text>ddd</Text>
-          </View>
-        </TabsContent>
-      </Tabs>
-      <Tabs value={value} onValueChange={setValue} variant="outline">
-        <TabsList>
-          <TabsTrigger value="feedback">
-            <Text>모임</Text>
-          </TabsTrigger>
-          <TabsTrigger value="survey">
-            <Text>테스크</Text>
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="feedback">
-          <View>
-            <Text>sss</Text>
-          </View>
-        </TabsContent>
-
-        <TabsContent value="survey">
-          <View>
-            <Text>ddd</Text>
-          </View>
-        </TabsContent>
-      </Tabs>
-      <Tabs value={value} onValueChange={setValue} variant="icon">
-        <TabsList>
-          <TabsTrigger value="feedback">
-            <MyPage1 width={24} height={24} />
-            <Text>해커톤</Text>
-          </TabsTrigger>
-          <TabsTrigger value="survey">
-            <MyPage1 width={24} height={24} />
-            <Text>해커톤</Text>
-          </TabsTrigger>
-          <TabsTrigger value="survey">
-            <MyPage1 width={24} height={24} />
-            <Text>해커톤</Text>
-          </TabsTrigger>
-          <TabsTrigger value="survey">
-            <MyPage1 width={24} height={24} />
-            <Text>해커톤</Text>
-          </TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="feedback">
-          <View>
-            <Text>sss</Text>
-          </View>
-        </TabsContent>
-
-        <TabsContent value="survey">
-          <View>
-            <Text>ddd</Text>
-          </View>
-        </TabsContent>
-      </Tabs>
-    </View>
+    <ScrollView className="flex-1 bg-white">
+      <View className="px-4">
+        {DUMMY_COMMENTS.map((comment) => (
+          <CommentItem key={comment.id} {...comment} />
+        ))}
+      </View>
+    </ScrollView>
   );
 }
