@@ -1,13 +1,34 @@
-import { TextClassContext } from '@/components/ui/text';
-import { cn } from '@/lib/utils';
-import * as TabsPrimitive from '@rn-primitives/tabs';
-import { Platform } from 'react-native';
+import { TextClassContext } from "@/components/ui/text";
+import { cn } from "@/lib/utils";
+import * as TabsPrimitive from "@rn-primitives/tabs";
+import { cva, VariantProps } from "class-variance-authority";
+import { Platform } from "react-native";
+
+const tabsTriggerVariants = cva(
+  "flex items-center justify-center whitespace-nowrap px-7 py-2 transition-all disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        // 왼쪽: 밑줄 스타일
+        underline:
+          "h-[calc(100%-1px)] border-b-2 border-transparent data-[state=active]:border-primary-normal",
+        // 오른쪽: 캡슐 스타일
+        pill: "rounded-full bg-muted text-muted-foreground data-[state=active]:bg-foreground data-[state=active]:text-background px-4 py-1.5",
+      },
+    },
+    defaultVariants: {
+      variant: "underline",
+    },
+  },
+);
 
 function Tabs({
   className,
   ...props
 }: TabsPrimitive.RootProps & React.RefAttributes<TabsPrimitive.RootRef>) {
-  return <TabsPrimitive.Root className={cn('flex flex-col gap-2', className)} {...props} />;
+  return (
+    <TabsPrimitive.Root className={cn("flex flex-col", className)} {...props} />
+  );
 }
 
 function TabsList({
@@ -17,14 +38,19 @@ function TabsList({
   return (
     <TabsPrimitive.List
       className={cn(
-        'bg-muted flex h-9 flex-row items-center justify-center rounded-lg p-[3px]',
-        Platform.select({ web: 'inline-flex w-fit', native: 'mr-auto' }),
-        className
+        "flex flex-row items-center justify-center",
+        Platform.select({ web: "inline-flex w-fit", native: "mr-auto" }),
+        className,
       )}
       {...props}
     />
   );
 }
+
+interface TabsTriggerProps
+  extends
+    TabsPrimitive.TriggerProps,
+    VariantProps<typeof tabsTriggerVariants> {}
 
 function TabsTrigger({
   className,
@@ -34,18 +60,22 @@ function TabsTrigger({
   return (
     <TextClassContext.Provider
       value={cn(
-        'text-foreground dark:text-muted-foreground text-sm font-medium',
-        value === props.value && 'dark:text-foreground'
-      )}>
+        "text-sm font-medium",
+        variant === "underline" &&
+          (isActive ? "text-foreground" : "text-muted-foreground"),
+        variant === "pill" &&
+          (isActive ? "dark:text-background" : "dark:text-muted-foreground"),
+      )}
+    >
       <TabsPrimitive.Trigger
         className={cn(
-          'flex h-[calc(100%-1px)] flex-row items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 shadow-none shadow-black/5',
+          "flex h-[calc(100%-1px)] flex-row items-center justify-center gap-1.5 px-7 py-2",
           Platform.select({
-            web: 'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring inline-flex cursor-default whitespace-nowrap transition-[color,box-shadow] focus-visible:outline-1 focus-visible:ring-[3px] disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0',
+            web: "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring inline-flex cursor-default whitespace-nowrap transition-[color,box-shadow] focus-visible:outline-1 focus-visible:ring-[3px] disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0",
           }),
-          props.disabled && 'opacity-50',
-          props.value === value && 'bg-background dark:border-foreground/10 dark:bg-input/30',
-          className
+          props.disabled && "opacity-50",
+          props.value === value && "border-b-2 border-primary-normal",
+          className,
         )}
         {...props}
       />
@@ -59,7 +89,7 @@ function TabsContent({
 }: TabsPrimitive.ContentProps & React.RefAttributes<TabsPrimitive.ContentRef>) {
   return (
     <TabsPrimitive.Content
-      className={cn(Platform.select({ web: 'flex-1 outline-none' }), className)}
+      className={cn(Platform.select({ web: "flex-1 outline-none" }), className)}
       {...props}
     />
   );
