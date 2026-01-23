@@ -6,6 +6,7 @@ const DUMMY_COMMENTS = [
   {
     id: "1",
     author: "링딩동",
+    uri: "https://github.com/mrzachnugent.png",
     role: "디자이너",
     date: "2025. 01. 01",
     content:
@@ -14,6 +15,7 @@ const DUMMY_COMMENTS = [
       {
         id: "1-1",
         author: "김딩동",
+        uri: "https://github.com/mrzachnugent.png",
         role: "개발자",
         date: "2025. 01. 01",
         content: "네, 확인했습니다! 모달 구조 변경 후 다시 공유드릴게요.",
@@ -21,6 +23,7 @@ const DUMMY_COMMENTS = [
       {
         id: "1-2",
         author: "김딩동",
+        uri: "https://github.com/mrzachnugent.png",
         role: "개발자",
         date: "2025. 01. 01",
         content: "추가로 모달의 애니메이션 속도도 조절이 필요할까요?",
@@ -30,6 +33,7 @@ const DUMMY_COMMENTS = [
   {
     id: "2",
     author: "박딩동",
+    uri: "https://github.com/mrzachnugent.png",
     role: "기획자",
     date: "2025. 01. 02",
     content: "전체적인 흐름이 아주 매끄럽네요. 수고하셨습니다!",
@@ -39,9 +43,15 @@ const DUMMY_COMMENTS = [
 export default function CommentsScreen() {
   return (
     <ScrollView className="flex-1 bg-white">
-      <View className="px-4">
-        {DUMMY_COMMENTS.map((comment) => (
-          <CommentItem key={comment.id} {...comment} />
+      <View className="bg-red-100">
+        {DUMMY_COMMENTS.map((comment, index) => (
+          <View key={comment.id}>
+            <CommentItem {...comment} />
+            {/* 마지막 요소가 아닐 때만 구분선 출력 */}
+            {index < DUMMY_COMMENTS.length - 1 && (
+              <View className="border-b border-neutral-95" />
+            )}
+          </View>
         ))}
       </View>
     </ScrollView>
