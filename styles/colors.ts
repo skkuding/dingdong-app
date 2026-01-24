@@ -17,8 +17,9 @@ module.exports = {
   },
   primary: {
     normal: "#5558FF",
+    extralight: "#EFEFFF",
     "extralight-coolgray": "#E6E7EC",
-    "light-coolgreay": "#A0A3C6",
+    "light-coolgray": "#A0A3C6",
     "normal-coolgray": "#545774",
     deep: "#191928",
     "cool-black": "#151519",

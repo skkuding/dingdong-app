@@ -4,7 +4,10 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 import "../global.css";
+import { toastConfig } from "../lib/toastConfig";
+
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -30,6 +33,7 @@ export default function RootLayout() {
         }}
       />
       <PortalHost />
+      <Toast config={toastConfig} />
     </SafeAreaProvider>
   );
 }
