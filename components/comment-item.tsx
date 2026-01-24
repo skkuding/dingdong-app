@@ -48,7 +48,7 @@ const CommentItem = ({
             <AvatarImage source={{ uri: uri }} />
           </Avatar>
           <View>
-            <Text className="text-sub2-sb-16 text-neutral-20">
+            <Text className="text-sub3-sb-16 text-neutral-20">
               {author} · {role}
             </Text>
             <Text className="text-caption4-r-12 text-neutral-60">{date}</Text>

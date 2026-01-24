@@ -40,7 +40,7 @@ module.exports = {
     letterSpacing: -0.72,
     fontWeight: "500",
   },
-  "sub2-sb-16": {
+  "sub3-sb-16": {
     fontSize: 16,
     lineHeight: 20.8, // 130%
     letterSpacing: -0.64, // -4%
