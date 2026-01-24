@@ -43,7 +43,7 @@ const DUMMY_COMMENTS = [
 export default function CommentsScreen() {
   return (
     <ScrollView className="flex-1 bg-white">
-      <View className="bg-red-100">
+      <View>
         {DUMMY_COMMENTS.map((comment, index) => (
           <View key={comment.id}>
             <CommentItem {...comment} />

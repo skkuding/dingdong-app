@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Text } from "@/components/ui/text";
+import { cn } from "@/lib/utils";
 import { View } from "react-native";
 
 type CommentProps = {
@@ -37,7 +38,12 @@ const CommentItem = ({
       )}
       <View className="flex flex-col">
         {/* 1. 작성자 정보 영역 (Accordion 외부) */}
-        <View className="flex-row items-center gap-3 mb-3">
+        <View
+          className={cn(
+            "flex-row items-center gap-3 mb-3",
+            isReply ? "px-2" : "px-4",
+          )}
+        >
           <Avatar alt={author}>
             <AvatarImage source={{ uri: uri }} />
           </Avatar>
@@ -50,13 +56,20 @@ const CommentItem = ({
         </View>
 
         {/* 2. 본문 내용 */}
-        <Text className="text-body4-r-14 text-neutral-30 mb-2">{content}</Text>
+        <Text
+          className={cn(
+            "text-body4-r-14 text-neutral-30 mb-2",
+            isReply ? "px-2" : "px-4",
+          )}
+        >
+          {content}
+        </Text>
 
         {/* 3. 답글 영역 (Accordion 활용) */}
         {replies && replies.length > 0 ? (
           <Accordion type="single" collapsible>
             <AccordionItem value="replies">
-              <AccordionTrigger className="caption1-m-13 text-neutral-50 gap-1">
+              <AccordionTrigger className="caption1-m-13 text-neutral-50 gap-1 px-4">
                 <Text> 답글 {replies.length}개</Text>
               </AccordionTrigger>
               <View className="h-5" />

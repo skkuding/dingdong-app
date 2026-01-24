@@ -38,7 +38,7 @@ const TAB_CONFIG: Record<
 
 function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   return (
-    <View className="flex-row justify-around rounded-full bg-white/80 py-3 px-2 mx-4 absolute bottom-0 left-0 right-0">
+    <View className="flex-row justify-around rounded-full bg-common-100/80 shadow-2xl py-3 px-2 mx-4 absolute bottom-0 left-0 right-0">
       {state.routes.map((route, index) => {
         const config = TAB_CONFIG[route.name];
         const label = config.label;
@@ -90,7 +90,7 @@ function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 
 export default function Layout() {
   return (
-    <SafeAreaView className="flex-1 ">
+    <SafeAreaView className="flex-1 bg-common-100">
       <Header />
       <Tabs
         screenOptions={{
