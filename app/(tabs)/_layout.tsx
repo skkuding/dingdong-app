@@ -9,6 +9,7 @@ import Help2 from "@/assets/icons/gnb/networking-2.svg";
 import MyPage1 from "@/assets/icons/gnb/person-1.svg";
 import MyPage2 from "@/assets/icons/gnb/person-2.svg";
 import Header from "@/components/Header";
+
 import colors from "@/styles/colors";
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 
