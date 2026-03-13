@@ -91,7 +91,7 @@ function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 
 export default function Layout() {
   return (
-    <SafeAreaView className="flex-1 bg-common-100">
+    <SafeAreaView edges={["bottom"]} className="flex-1 bg-common-100">
       <Header />
       <Tabs
         screenOptions={{
