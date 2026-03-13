@@ -10,13 +10,13 @@ const Header = () => {
   return (
     <View
       style={{ paddingTop: insets.top }}
-      className="absolute top-6 w-full z-10 px-4 pb-3 flex justify-end"
+      className="sticky w-full  z-10 px-4 pb-3 flex justify-end bg-common-100"
     >
-      <View className="flex-row justify-between ">
-        <Text className="text-2xl font-bold text-common-100">DINGDONG</Text>
+      <View className="flex-row justify-between pt-6">
+        <Text className="text-2xl font-bold  text-common-0">DINGDONG</Text>
         <View className="flex-row gap-3">
-          <BellIcon width={24} height={24} color={colors.common[100]} />
-          <MenuIcon width={24} height={24} color={colors.common[100]} />
+          <BellIcon width={24} height={24} color={colors.common[0]} />
+          <MenuIcon width={24} height={24} color={colors.common[0]} />
         </View>
       </View>
     </View>

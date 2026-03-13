@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("./styles/colors");
 const typography = require("./styles/typography");
-const { hairlineWidth } = require("nativewind/theme");
+const boxShadow = require("./styles/boxShadow");
 
 // fontSize를 추출해서 Tailwind 형식으로 변환
 const fontSize = Object.fromEntries(
@@ -27,12 +27,13 @@ module.exports = {
     extend: {
       colors,
       fontSize,
+      boxShadow,
     },
   },
+  plugins: [require("tailwindcss-animate")],
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [require("tailwindcss-animate")],
   corePlugins: {
     backgroundOpacity: true,
   },

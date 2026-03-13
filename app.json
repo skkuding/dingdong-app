@@ -11,7 +11,13 @@
     "backgroundColor": "#000000",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.minngyuseong.dingdong"
+      "bundleIdentifier": "com.minngyuseong.dingdong",
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true,
+          "NSAllowsLocalNetworking": true
+        }
+      }
     },
     "android": {
       "edgeToEdgeEnabled": true,

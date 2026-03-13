@@ -17,7 +17,6 @@ import * as Haptics from "expo-haptics";
 import { Tabs } from "expo-router";
 import React from "react";
 import { Platform, Pressable, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 type IconComponent = React.ComponentType<{
   width: number | string;
@@ -37,9 +36,9 @@ const TAB_CONFIG: Record<
   mypage: { label: "마이", outline: MyPage1, filled: MyPage2 },
 };
 
-function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
+function CustomTabBar({ state, navigation }: BottomTabBarProps) {
   return (
-    <View className="flex-row justify-around rounded-full bg-common-100/80 shadow-2xl py-3 px-2 mx-4 absolute bottom-0 left-0 right-0">
+    <View className="flex-row justify-around rounded-full bg-common-100/80 shadow-[0px_8px_20px_0px_rgba(45,45,56,0.10)] backdrop-blur-md py-3 px-2 mx-4 absolute bottom-0 left-0 right-0">
       {state.routes.map((route, index) => {
         const config = TAB_CONFIG[route.name];
         const label = config.label;
@@ -91,7 +90,7 @@ function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 
 export default function Layout() {
   return (
-    <SafeAreaView edges={["bottom"]} className="flex-1 bg-common-100">
+    <View className="flex-1 mb-5 bg-common-100">
       <Header />
       <Tabs
         screenOptions={{
@@ -105,6 +104,6 @@ export default function Layout() {
         <Tabs.Screen name="community" />
         <Tabs.Screen name="mypage" />
       </Tabs>
-    </SafeAreaView>
+    </View>
   );
 }

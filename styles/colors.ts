@@ -24,5 +24,7 @@ module.exports = {
     deep: "#191928",
     "cool-black": "#151519",
     "error-normal": "#FF6359",
+    background: "#F6F6F8",
+    light: "#B3B4FF",
   },
 };

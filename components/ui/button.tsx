@@ -5,7 +5,7 @@ import { TextClassContext } from "./text";
 
 const buttonVariants = cva(
   cn(
-    "group shrink-0 justify-center items-center rounded-full",
+    "group shrink-0 justify-center items-center rounded-sm",
     Platform.select({
       web: "focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive whitespace-nowrap outline-none transition-all focus-visible:ring-[3px] disabled:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
     }),
@@ -18,7 +18,7 @@ const buttonVariants = cva(
           Platform.select({ web: "hover:bg-primary/90" }),
         ),
         outline: cn(
-          "bg-primary-extralight-coolgray border border-primary-normal",
+          "bg-primary-extralight border border-primary-normal",
           Platform.select({
             web: "hover:bg-accent dark:hover:bg-input/50",
           }),
@@ -35,7 +35,7 @@ const buttonVariants = cva(
       },
       size: {
         default: cn("py-3", Platform.select({ web: "has-[>svg]:px-3" })),
-        sm: cn("py-1.5", Platform.select({ web: "has-[>svg]:px-2.5" })),
+        sm: cn("py-1.5 px-3", Platform.select({ web: "has-[>svg]:px-2.5" })),
         lg: cn("py-[14px]", Platform.select({ web: "has-[>svg]:px-4" })),
         icon: "h-6 w-6",
       },
