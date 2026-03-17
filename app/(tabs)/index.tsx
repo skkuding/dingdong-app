@@ -1,16 +1,38 @@
-// app/index.tsx (HomeScreen)
-
 import ArrowRight from "@/assets/icons/arrow-1/right.svg";
 import { Button } from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import EmptyView from "@/components/ui/empty-view";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import colors from "@/styles/colors";
+import { Image } from "expo-image";
 import React, { useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import {
+  Dimensions,
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+
+const IMAGE_SIZE = 64;
+const SCREEN_WIDTH = Dimensions.get("window").width;
+// 양옆 패딩(32)을 뺀 영역의 72% 너비 + 카드 간격 8px
+const ITEM_WIDTH = (SCREEN_WIDTH - 32) * 0.72;
+const GAP = 8;
+const SNAP_INTERVAL = ITEM_WIDTH + GAP; // 한 번 스와이프할 때 넘어갈 거리
 
 export default function HomeScreen() {
   const [value, setValue] = useState("group");
+  const [currentIndex, setCurrentIndex] = useState(0); // 인디케이터용 상태
+
+  // 스크롤 시 현재 인덱스 계산
+  const handleScroll = (event: any) => {
+    const offsetX = event.nativeEvent.contentOffset.x;
+    const index = Math.round(offsetX / SNAP_INTERVAL);
+    setCurrentIndex(index);
+  };
+
   return (
     <ScrollView className="flex-1 bg-common-100">
       <View className="py-3 px-4 flex-col gap-4 bg-red-100">
@@ -135,6 +157,101 @@ export default function HomeScreen() {
           </TabsContent>
         </Tabs>
       </View>
+      <View className="px-4 py-7 flex-col bg-yellow-100 gap-3">
+        <View className="flex-row justify-between items-center">
+          <View className="flex-col gap-1.5">
+            <Text className="text-title1-sb-20 text-common-0">솔루션 공유</Text>
+            <Text className="text-caption3-r-13 text-neutral-40">
+              내가 알아야 할 중요한 솔루션 공유
+            </Text>
+          </View>
+          <View className="flex-row items-center ">
+            <Text className="text-neutral-50 text-body2-m-14">더보기</Text>
+            <ArrowRight height={16} width={16} color={colors.neutral[50]} />
+          </View>
+        </View>
+        <FlatList
+          data={defaultDataWith6Colors}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          snapToInterval={SNAP_INTERVAL} // 카드가 딱딱 걸리게 하는 핵심!
+          decelerationRate="fast"
+          contentContainerStyle={{ paddingHorizontal: 16 }} // 양옆 스크롤 여백
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
+          renderItem={({ index }) => (
+            <View
+              style={{
+                width: ITEM_WIDTH,
+                marginRight:
+                  index === defaultDataWith6Colors.length - 1 ? 0 : GAP,
+              }}
+            >
+              <Card className="py-4 px-3 flex-row gap-4 items-center" hasShadow>
+                <View className="flex-col flex-1">
+                  <Text className="mb-0.5 text-primary-normal text-caption2-m-12">
+                    2026-1 백엔드팀
+                  </Text>
+                  <View className="flex-row justify-between items-center mb-2">
+                    <Text className="text-common-0 text-sub3-sb-16">
+                      API 인증 오류 해결
+                    </Text>
+                    <ArrowRight
+                      height={20}
+                      width={20}
+                      color={colors.neutral[50]}
+                    />
+                  </View>
+                  <Text
+                    className="text-caption3-r-13 text-neutral-40"
+                    numberOfLines={1}
+                  >
+                    간헐적으로 API 서비스(아마도 ClientAPI)가 500 에러를
+                    발생시키는 상황입니다.
+                  </Text>
+                </View>
+                <Image
+                  style={{
+                    width: IMAGE_SIZE,
+                    height: IMAGE_SIZE,
+                    borderRadius: 4,
+                  }}
+                  source={require("@/assets/images/typing.png")}
+                />
+              </Card>
+            </View>
+          )}
+        />
+        <View className="flex-row justify-center gap-[6px] mt-2">
+          {defaultDataWith6Colors.map((_, index) => (
+            <View
+              key={index}
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: 3,
+                backgroundColor: currentIndex === index ? "#5558FF" : "#D9D9D9", // 색상은 프로젝트에 맞게 수정하세요
+              }}
+            />
+          ))}
+        </View>
+      </View>
     </ScrollView>
   );
 }
+
+const defaultDataWith6Colors = [
+  "#B0604D",
+  "#899F9C",
+  "#B3C680",
+  "#5C6265",
+  "#F5D399",
+  "#F1F1F1",
+];
+
+const styles = StyleSheet.create({
+  pagerView: {
+    height: 100,
+    // width: "100%",
+  },
+});
